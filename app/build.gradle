@@ -7,19 +7,17 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.2.0'
+    compile rootProject.ext.dependencies["support-v4"]
+    compile rootProject.ext.dependencies["appcompat-v7"]
+
     testCompile 'junit:junit:4.12'
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    // Because RxAndroid releases are few and far between, it is recommended you also
-    // explicitly depend on RxJava's latest version for bug fixes and new features.
-    compile 'io.reactivex.rxjava2:rxjava:2.0.1'
-    compile 'com.squareup.retrofit2:retrofit:2.2.0'
+
     //    编译extras目录下的ShimmerAndroid模块
     //    compile project(':extras:ShimmerAndroid')
     compile project(path: ':library')
 
 
-    //   Tinker - TEST
+    //   Test - Tinker
     //optional, help to generate the final application
     provided("com.tencent.tinker:tinker-android-anno:1.7.7")
     //tinker's main Android lib
@@ -55,16 +53,16 @@ android {
 //            storeFile file("./keystore/debug.keystore")
 //        }
     }
-    compileSdkVersion 25
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
     //build tools的版本
-    buildToolsVersion "25.0.1"
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
     defaultConfig {
         //应用的包名
-        applicationId "org.caworks.ca1"
-        minSdkVersion 15
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        applicationId rootProject.ext.android.applicationId
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         /**
@@ -86,8 +84,8 @@ android {
     }
     //java版本
     compileOptions {
-        sourceCompatibility org.gradle.api.JavaVersion.VERSION_1_7
-        targetCompatibility org.gradle.api.JavaVersion.VERSION_1_7
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
     }
     //配置不同的构建类型
     buildTypes {
