@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/bt_load_path"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="load path"
+        android:textAllCaps="false"
+        />
+
+    <Button
+        android:id="@+id/bt_clear_path"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="clear path"
+        android:textAllCaps="false"
+        />
+
+    <Button
+        android:id="@+id/bt_toast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="toast"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/bt_show_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="show_info"
+        android:textAllCaps="false"/>
+
+</LinearLayout>
