@@ -1,5 +1,6 @@
 package org.caworks.ca1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -20,6 +21,16 @@ public class MainActivity extends BaseActivity {
                 TestMainActivity.enterActivity(mContext);
             }
         });
+    }
+
+    /**
+     * 在回退后 仍不关闭 进程进入后台
+     */
+    @Override
+    public void onBackPressed() {
+        Intent launcherIntent = new Intent(Intent.ACTION_MAIN);
+        launcherIntent.addCategory(Intent.CATEGORY_HOME);
+        startActivity(launcherIntent);
     }
 
 }

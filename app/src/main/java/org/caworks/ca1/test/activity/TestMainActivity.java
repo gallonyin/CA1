@@ -30,5 +30,11 @@ public class TestMainActivity extends BaseActivity {
                 TestTinkerActivity.enterActivity(mContext);
             }
         });
+        findViewById(R.id.bt_wx_attention).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TestWxAttentionActivity.enterActivity(mContext);
+            }
+        });
     }
 }
