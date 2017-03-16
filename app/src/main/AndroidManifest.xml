@@ -26,6 +26,21 @@
         <activity android:name=".test.activity.TestMainActivity" />
         <activity android:name=".test.activity.TestTinkerActivity" />
         <activity android:name=".test.activity.TestWxAttentionActivity" />
+        <!-- TEST -->
+        <service
+            android:name=".test.service.MyAccessibilityService"
+            android:label="我的辅助功能"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/wx_service_config" />
+        </service>
 
     </application>
 

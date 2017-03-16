@@ -22,6 +22,9 @@ dependencies {
     provided 'com.tencent.tinker:tinker-android-anno:1.7.7'
     //tinker's main Android lib
     compile 'com.tencent.tinker:tinker-android-lib:1.7.7'
+
+    // ness
+    compile 'com.github.NessCurie:RecyclerViewUtils:d0f180827c'
 }
 
 def gitSha() {
