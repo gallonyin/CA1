@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import org.caworks.ca1.test.activity.TestMainActivity;
-import org.caworks.ca1.ui.activity.BaseActivity;
+import org.caworks.library.activity.BaseActivity;
 
 public class MainActivity extends BaseActivity {
     private static final String TAG = "MainActivity";
