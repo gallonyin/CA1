@@ -1,23 +1,23 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    //build tools的版本
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
 
     defaultConfig {
-//        applicationId "org.caworks.library"
-        minSdkVersion 15
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+//        applicationid "org.caworks.library"
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+//        testinstrumentationrunner "android.support.test.runner.androidjunitrunner"
     }
     buildTypes {
         release {
-//            minifyEnabled false
-//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            minifyenabled false
+//            proguardfiles getdefaultproguardfile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
