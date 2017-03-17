@@ -1,4 +1,4 @@
-package org.caworks.ca1.ui.activity;
+package org.caworks.library.activity;
 
 import android.app.Activity;
 import android.content.Context;
@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 /**
- * 项目中所有activity的基类
+ * Basis of all activity
  * Created by gallon on 2017/3/14
  */
 

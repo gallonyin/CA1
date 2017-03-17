@@ -10,7 +10,7 @@ import android.view.View;
 
 import org.caworks.ca1.R;
 import org.caworks.ca1.test.service.MyAccessibilityService;
-import org.caworks.ca1.ui.activity.BaseActivity;
+import org.caworks.library.activity.BaseActivity;
 import org.caworks.library.util.CustomToast;
 
 /**

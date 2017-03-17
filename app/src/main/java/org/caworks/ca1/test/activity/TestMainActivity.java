@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import org.caworks.ca1.R;
-import org.caworks.ca1.ui.activity.BaseActivity;
+import org.caworks.library.activity.BaseActivity;
 
 /**
  * Created by gallon on 2017/3/14

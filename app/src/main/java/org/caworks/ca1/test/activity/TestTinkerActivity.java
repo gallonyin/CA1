@@ -12,7 +12,7 @@ import com.tencent.tinker.lib.tinker.Tinker;
 import com.tencent.tinker.lib.tinker.TinkerInstaller;
 
 import org.caworks.ca1.R;
-import org.caworks.ca1.ui.activity.BaseActivity;
+import org.caworks.library.activity.BaseActivity;
 
 import java.io.File;
 
