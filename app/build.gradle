@@ -23,6 +23,11 @@ dependencies {
     // ness
 //    compile 'com.github.NessCurie:RecyclerViewUtils:d0f180827c'
 
+    compile rootProject.ext.dependencies["butterknife"]
+    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
+
+    compile rootProject.ext.dependencies["dagger"]
+    annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
 }
 
 def gitSha() {

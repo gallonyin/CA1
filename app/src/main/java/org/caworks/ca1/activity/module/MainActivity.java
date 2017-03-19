@@ -1,14 +1,24 @@
-package org.caworks.ca1;
+package org.caworks.ca1.activity.module;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.view.MenuItem;
 import android.view.View;
 
+import org.caworks.ca1.R;
 import org.caworks.ca1.test.activity.TestMainActivity;
 import org.caworks.library.activity.BaseActivity;
 
-public class MainActivity extends BaseActivity {
-    private static final String TAG = "MainActivity";
+public class MainActivity extends BaseActivity implements
+        NavigationView.OnNavigationItemSelectedListener {
+
+    public static void enterActivity(Context context) {
+        Intent intent = new Intent(context, MainActivity.class);
+        context.startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,4 +43,8 @@ public class MainActivity extends BaseActivity {
         startActivity(launcherIntent);
     }
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        return false;
+    }
 }
