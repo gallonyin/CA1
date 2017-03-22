@@ -32,4 +32,6 @@ dependencies {
     compile rootProject.ext.dependencies["retrofit"]
 //    compile rootProject.ext.dependencies["adapter-rxjava"]
     compile rootProject.ext.dependencies["recyclerview"]
+
+    compile rootProject.ext.dependencies["ormlite-android"]
 }
