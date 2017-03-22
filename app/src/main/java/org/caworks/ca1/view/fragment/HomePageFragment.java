@@ -18,7 +18,7 @@ public class HomePageFragment extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return ;
+        return 0;
     }
 
     @Override

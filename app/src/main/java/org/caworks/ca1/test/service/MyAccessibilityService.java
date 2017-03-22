@@ -3,6 +3,7 @@ package org.caworks.ca1.test.service;
 import android.accessibilityservice.AccessibilityService;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import org.caworks.library.util.CustomToast;
 import org.caworks.library.util.GLog;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,31 +37,39 @@ public class MyAccessibilityService extends AccessibilityService {
 //                break;
             case AccessibilityEvent.TYPE_VIEW_LONG_CLICKED:
                 CustomToast.showToast(getApplicationContext(), "长点击改变");
+                GLog.e("长点击改变");
                 eventText = "TYPE_VIEW_LONG_CLICKED";
                 break;
             case AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED:
                 CustomToast.showToast(getApplicationContext(), "窗口改变");
+                GLog.e("窗口改变");
+                //获取聊天信息
+                getQQChatLog();
                 eventText = "TYPE_WINDOW_STATE_CHANGED";
                 break;
             case AccessibilityEvent.TYPE_NOTIFICATION_STATE_CHANGED:
                 CustomToast.showToast(getApplicationContext(), "通知改变");
+                GLog.e("通知改变");
                 eventText = "TYPE_NOTIFICATION_STATE_CHANGED";
                 break;
             case AccessibilityEvent.CONTENT_CHANGE_TYPE_SUBTREE:
                 AccessibilityNodeInfo nodeInfo = getRootInActiveWindow();
-                List<AccessibilityNodeInfo> wxList = nodeInfo.findAccessibilityNodeInfosByText("1日旧");
-                GLog.e("点击了");
+                List<AccessibilityNodeInfo> wxList = nodeInfo.findAccessibilityNodeInfosByText("1");
                 for (AccessibilityNodeInfo accessibilityNodeInfo : wxList) {
 //                    accessibilityNodeInfo.addAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_CLICK);
-                    GLog.e("点击了2");
-                    accessibilityNodeInfo.performAction(AccessibilityNodeInfo.ACTION_CLICK);
+//                    GLog.e("点击了2");
+//                    accessibilityNodeInfo.performAction(AccessibilityNodeInfo.ACTION_CLICK);
                     break;
                 }
                 CustomToast.showToast(getApplicationContext(), "内容改变");
+                GLog.e("内容改变");
+                //获取聊天信息
+                getQQChatLog();
                 eventText = "CONTENT_CHANGE_TYPE_SUBTREE";
                 break;
             //每次在聊天界面中有新消息到来时都出触发该事件
             case AccessibilityEvent.TYPE_VIEW_SCROLLED:
+                GLog.e("视图滚动触发");
                 //获取当前聊天页面的根布局
                 AccessibilityNodeInfo rootNode = getRootInActiveWindow();
                 //获取聊天信息
@@ -137,6 +147,42 @@ public class MyAccessibilityService extends AccessibilityService {
                         Toast.makeText(this, ChatName + "：" + ChatRecord, Toast.LENGTH_SHORT).show();
                     }
                 }
+            }
+        }
+    }
+
+    List latestMessages = new ArrayList<>();
+    /**
+     * Note: level > SDK 4.3 (18)
+     */
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
+    private void getQQChatLog() {
+        //获取当前聊天页面的根布局
+        AccessibilityNodeInfo rootNode = getRootInActiveWindow();
+        if (rootNode != null) {
+            //获取所有聊天的线性布局
+            List<AccessibilityNodeInfo> listChatRecord = rootNode.findAccessibilityNodeInfosByViewId("com.tencent.mobileqq:id/listView1");
+            GLog.e("获得聊天信息 listView1 listChatRecord.size()：" + listChatRecord.size());
+            if(listChatRecord.size()==0){
+                return;
+            }
+            List<AccessibilityNodeInfo> tv_messages = listChatRecord.get(0).findAccessibilityNodeInfosByViewId("com.tencent.mobileqq:id/chat_item_content_layout");
+            GLog.e("获得聊天信息 tv_messages.size()：" + tv_messages.size());
+            for (AccessibilityNodeInfo tv_message : tv_messages) {
+                GLog.e("message: " + tv_message.getText());
+            }
+            latestMessages = tv_messages;
+            List<AccessibilityNodeInfo> iv_heads = listChatRecord.get(0).findAccessibilityNodeInfosByViewId("com.tencent.mobileqq:id/chat_item_head_icon");
+            GLog.e("获得聊天头像 iv_heads.size()：" + iv_heads.size());
+            for (AccessibilityNodeInfo iv_head : iv_heads) {
+                Rect rect = new Rect();
+                iv_head.getBoundsInScreen(rect);
+                GLog.e("head: " + rect.centerX());
+            }
+            List<AccessibilityNodeInfo> tv_times = listChatRecord.get(0).findAccessibilityNodeInfosByViewId("com.tencent.mobileqq:id/chat_item_time_stamp");
+            GLog.e("获得聊天时间 tv_times.size()：" + tv_times.size());
+            for (AccessibilityNodeInfo tv_time : tv_times) {
+                GLog.e("time: " + tv_time.getText());
             }
         }
     }
