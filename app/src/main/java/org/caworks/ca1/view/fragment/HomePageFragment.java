@@ -23,7 +23,10 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof Onfragment)
+        if (context instanceof OnFragmentInteractionListener) {
+
+            // TODO: 2017/3/23 0023  
+        }
     }
 
     @Override

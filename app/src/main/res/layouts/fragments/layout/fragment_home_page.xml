@@ -125,7 +125,7 @@
                     android:textSize="26sp"
                     tools:text="优" />
 
-                <com.baronzhang.android.widget.IndicatorView
+                <org.caworks.ca1.widget.IndicatorView
                     android:id="@+id/indicator_view_aqi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

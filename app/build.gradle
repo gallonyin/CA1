@@ -13,6 +13,7 @@ dependencies {
     //    编译extras目录下的ShimmerAndroid模块
     //    compile project(':extras:ShimmerAndroid')
     compile project(path: ':library')
+    compile project(path: ':widget')
 
     //   Test - Tinker
     //optional, help to generate the final application
