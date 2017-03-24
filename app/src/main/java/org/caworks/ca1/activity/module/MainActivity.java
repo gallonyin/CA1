@@ -8,10 +8,8 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
 
 import org.caworks.ca1.R;
-import org.caworks.ca1.test.activity.TestMainActivity;
 import org.caworks.ca1.view.fragment.HomePageFragment;
 import org.caworks.library.activity.BaseActivity;
 
@@ -25,6 +23,9 @@ public class MainActivity extends BaseActivity implements
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
 
+//    @Inject
+//    HomepagePresenter
+
     public static void enterActivity(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
         context.startActivity(intent);
@@ -35,12 +36,6 @@ public class MainActivity extends BaseActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        findViewById(R.id.bt_test).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TestMainActivity.enterActivity(mContext);
-            }
-        });
     }
 
     /**
