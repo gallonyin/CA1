@@ -28,8 +28,9 @@ project.ext {
             "stream"                     : "com.annimon:stream:1.0.8",
 
             //rx
-            "rxjava"                     : "io.reactivex.rxjava2:rxjava:2.0.1",
-            "rxandroid"                  : "io.reactivex.rxjava2:rxandroid:2.0.1",
+//            "rxjava"                     : "io.reactivex.rxjava2:rxjava:2.0.1",
+//            "rxandroid"                  : "io.reactivex.rxjava2:rxandroid:2.0.1",
+            "rxandroid"                  : "io.reactivex:rxandroid:1.2.1",
             "rxbinding"                  : "com.jakewharton.rxbinding:rxbinding:${rxBindingVersion}",
             "rxbinding-support-v4"       : "com.jakewharton.rxbinding:rxbinding-support-v4:${rxBindingVersion}",
             "rxbinding-appcompat-v7"     : "com.jakewharton.rxbinding:rxbinding-appcompat-v7:${rxBindingVersion}",

@@ -1,4 +1,4 @@
-package org.caworks.ca1.activity.module;
+package org.caworks.ca1.activity;
 
 import android.content.Context;
 import android.content.Intent;
