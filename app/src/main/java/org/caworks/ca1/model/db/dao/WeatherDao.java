@@ -45,7 +45,7 @@ public class WeatherDao {
         this.weatherDaoOperation = WeatherDatabaseHelper.getInstance(context).getWeatherDao(Weather.class);
     }
 
-    public Weather queryWeather(String cityId) throws SQLException {
+    public Weather queryWeather(final String cityId) throws SQLException {
 
         return TransactionManager.callInTransaction(WeatherDatabaseHelper.getInstance(context).getConnectionSource(),
                 new Callable<Weather>() {
@@ -97,18 +97,22 @@ public class WeatherDao {
      */
     public List<Weather> queryAllSaveCity() throws SQLException {
 
-        return TransactionManager.callInTransaction(WeatherDatabaseHelper.getInstance(context).getConnectionSource(), () -> {
+        return TransactionManager.callInTransaction(WeatherDatabaseHelper.getInstance(context).getConnectionSource(),
+                new Callable<List<Weather>>() {
+                    @Override
+                    public List<Weather> call() throws Exception {
 
-            List<Weather> weatherList = weatherDaoOperation.queryForAll();
-            for (Weather weather : weatherList) {
-                String cityId = weather.getCityId();
-                weather.setAirQualityLive(apiDaoOperation.queryForId(cityId));
-                weather.setWeatherForecasts(forecastDaoOperation.queryForEq(WeatherForecast.CITY_ID_FIELD_NAME, cityId));
-                weather.setLifeIndexes(lifeIndexesDaoOperation.queryForEq(WeatherForecast.CITY_ID_FIELD_NAME, cityId));
-                weather.setWeatherLive(realTimeDaoOperation.queryForId(cityId));
-            }
-            return weatherList;
-        });
+                        List<Weather> weatherList = weatherDaoOperation.queryForAll();
+                        for (Weather weather : weatherList) {
+                            String cityId = weather.getCityId();
+                            weather.setAirQualityLive(apiDaoOperation.queryForId(cityId));
+                            weather.setWeatherForecasts(forecastDaoOperation.queryForEq(WeatherForecast.CITY_ID_FIELD_NAME, cityId));
+                            weather.setLifeIndexes(lifeIndexesDaoOperation.queryForEq(WeatherForecast.CITY_ID_FIELD_NAME, cityId));
+                            weather.setWeatherLive(realTimeDaoOperation.queryForId(cityId));
+                        }
+                        return weatherList;
+                    }
+                });
     }
 
     private void insertWeather(Weather weather) throws SQLException {

@@ -3,6 +3,7 @@ package org.caworks.ca1.presenter;
 import android.content.Context;
 
 import org.caworks.ca1.contract.HomePageContract;
+import org.caworks.ca1.model.db.dao.WeatherDao;
 
 import javax.inject.Inject;
 
