@@ -6,4 +6,6 @@ package org.caworks.ca1;
 
 public class AppConstants {
 
+    public static final String DB_NAME_CITY = "city.db";
+
 }
