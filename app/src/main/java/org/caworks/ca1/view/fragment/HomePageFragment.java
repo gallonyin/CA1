@@ -10,6 +10,7 @@ import org.caworks.ca1.contract.HomePageContract;
 import org.caworks.ca1.model.db.entities.minimalist.LifeIndex;
 import org.caworks.ca1.model.db.entities.minimalist.Weather;
 import org.caworks.ca1.model.db.entities.minimalist.WeatherForecast;
+import org.caworks.ca1.view.adapter.ForecastAdapter;
 import org.caworks.ca1.widget.IndicatorView;
 import org.caworks.library.fragment.BaseFragment;
 
