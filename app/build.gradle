@@ -72,6 +72,10 @@ android {
         versionName rootProject.ext.android.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+        // support jdk8
+        jackOptions {
+            enabled true
+        }
         /**
          * you can use multiDex and install it in your ApplicationLifeCycle implement
          */

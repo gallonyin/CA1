@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import org.caworks.ca1.model.preference.PreferenceHelper;
+import org.caworks.ca1.util.CityDBUtil;
 import org.caworks.library.activity.BaseActivity;
 import org.caworks.library.util.GLog;
 
@@ -26,12 +27,7 @@ public class WelcomeActivity extends BaseActivity {
         Observable.just(initAppData())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<String>() {
-                    @Override
-                    public void call(String s) {
-                        gotoMainPage();
-                    }
-                });
+                .subscribe(result -> gotoMainPage());
     }
 
     private void gotoMainPage() {
@@ -41,6 +37,9 @@ public class WelcomeActivity extends BaseActivity {
 
     private String initAppData() {
         PreferenceHelper.loadDefaults();
-        return "";
+        GLog.d("importCityData start");
+        CityDBUtil.importCityData();
+        GLog.d("importCityData end");
+        return null;
     }
 }

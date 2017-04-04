@@ -1,8 +1,8 @@
 package org.caworks.ca1.util;
 
-import com.baronzhang.android.weather.AppConstants;
-import com.baronzhang.android.weather.R;
-import com.baronzhang.android.weather.WeatherApplication;
+import org.caworks.ca1.AppConstants;
+import org.caworks.ca1.MyTinkerInApplicationLike;
+import org.caworks.ca1.R;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -21,10 +21,10 @@ public class CityDBUtil {
     public static void importCityData() {
 
         // 判断保持城市的数据库文件是否存在
-        File file = new File(WeatherApplication.getInstance().getDatabasePath(AppConstants.DB_NAME_CITY).getAbsolutePath());
+        File file = new File(MyTinkerInApplicationLike.getInstance().getDatabasePath(AppConstants.DB_NAME_CITY).getAbsolutePath());
         if (!file.exists()) {// 如果不存在，则导入数据库文件
             //数据库文件
-            File dbFile = WeatherApplication.getInstance().getDatabasePath(AppConstants.DB_NAME_CITY);
+            File dbFile = MyTinkerInApplicationLike.getInstance().getDatabasePath(AppConstants.DB_NAME_CITY);
             try {
                 if (!dbFile.getParentFile().exists()) {
                     dbFile.getParentFile().mkdir();
@@ -33,7 +33,7 @@ public class CityDBUtil {
                     dbFile.createNewFile();
                 }
                 //加载欲导入的数据库
-                InputStream is = WeatherApplication.getInstance().getResources().openRawResource(R.raw.city);
+                InputStream is = MyTinkerInApplicationLike.getInstance().getResources().openRawResource(R.raw.city);
                 FileOutputStream fos = new FileOutputStream(dbFile);
                 byte[] buffer = new byte[is.available()];
                 is.read(buffer);

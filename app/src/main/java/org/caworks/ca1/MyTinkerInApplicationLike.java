@@ -30,5 +30,13 @@ public class MyTinkerInApplicationLike extends DefaultApplicationLike {
         MultiDex.install(base);
         //初始化Tinker
         TinkerInstaller.install(this);
+        //获得全局上下文
+        application = (TinkerInApplication) base;
+    }
+
+    private static TinkerInApplication application;
+
+    public static Context getInstance() {
+        return application;
     }
 }
