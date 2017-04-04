@@ -14,34 +14,39 @@ import org.caworks.library.adapter.BaseRecyclerViewAdapter;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by Gallon on 2017/3/30.
  */
 
-public class ForecastAdapter extends BaseRecyclerViewAdapter {
+public class ForecastAdapter extends BaseRecyclerViewAdapter<ForecastAdapter.ViewHolder> {
 
-    private List<WeatherForecast> weatherforecasts;
+    private List<WeatherForecast> weatherForecasts;
 
     public ForecastAdapter(List<WeatherForecast> weatherForecasts) {
-        this.weatherforecasts = weatherForecasts;
+        this.weatherForecasts = weatherForecasts;
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_forecast, parent, false);
-        return new ViewHolder;
+        return new ViewHolder(itemView, this);
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        WeatherForecast weatherForecast = weatherForecasts.get(position);
+        holder.weekTextView.setText(weatherForecast.getWeek());
+        holder.weatherIconImageView.setImageResource(R.mipmap.ic_launcher);
+        holder.tempMaxTextView.setText(weatherForecast.getTempMax());
+        holder.tempMinTextView.setText(weatherForecast.getTempMin());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return weatherForecasts == null ? 0 : weatherForecasts.size();
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -55,8 +60,10 @@ public class ForecastAdapter extends BaseRecyclerViewAdapter {
         @BindView(R.id.temp_min_text_view)
         TextView tempMinTextView;
 
-        public ViewHolder(View itemView) {
+        public ViewHolder(View itemView, final ForecastAdapter adapter) {
             super(itemView);
+            ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(v -> adapter.onItemHolderClick(ViewHolder.this));
         }
     }
 }
