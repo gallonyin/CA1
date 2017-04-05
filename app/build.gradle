@@ -1,5 +1,6 @@
 //声明是Android程序
 apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
 
 dependencies {
     //编译libs目录下的所有jar包
@@ -72,10 +73,6 @@ android {
         versionName rootProject.ext.android.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        // support jdk8
-        jackOptions {
-            enabled true
-        }
         /**
          * you can use multiDex and install it in your ApplicationLifeCycle implement
          */

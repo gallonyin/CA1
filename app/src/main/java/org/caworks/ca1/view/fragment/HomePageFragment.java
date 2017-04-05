@@ -69,7 +69,7 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
     private List<LifeIndex> lifeIndices;
 
     private ForecastAdapter forecastAdapter;
-    private LifeIndexAdapter lifeIndexAdapter;
+//    private LifeIndexAdapter lifeIndexAdapter;
 
     private HomePageContract.Presenter presenter;
 

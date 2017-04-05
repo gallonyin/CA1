@@ -8,7 +8,10 @@ import android.support.multidex.MultiDex;
 import com.tencent.tinker.anno.DefaultLifeCycle;
 import com.tencent.tinker.lib.tinker.TinkerInstaller;
 import com.tencent.tinker.loader.app.DefaultApplicationLike;
+import com.tencent.tinker.loader.app.TinkerApplication;
 import com.tencent.tinker.loader.shareutil.ShareConstants;
+
+import org.caworks.library.util.GLog;
 
 /**
  * Created by gallon on 2017/3/15
@@ -31,10 +34,10 @@ public class MyTinkerInApplicationLike extends DefaultApplicationLike {
         //初始化Tinker
         TinkerInstaller.install(this);
         //获得全局上下文
-        application = (TinkerInApplication) base;
+        application = base;
     }
 
-    private static TinkerInApplication application;
+    private static Context application;
 
     public static Context getInstance() {
         return application;
