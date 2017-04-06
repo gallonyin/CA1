@@ -14,6 +14,7 @@ import org.caworks.ca1.R;
 import org.caworks.ca1.presenter.HomePagePresenter;
 import org.caworks.ca1.view.fragment.HomePageFragment;
 import org.caworks.library.activity.BaseActivity;
+import org.caworks.library.util.ActivityUtils;
 
 import javax.inject.Inject;
 
@@ -51,6 +52,9 @@ public class MainActivity extends BaseActivity implements
 
         navigationView.setNavigationItemSelectedListener(this);
         HomePageFragment homePageFragment = new HomePageFragment();
+        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), homePageFragment, R.id.fragment_container);
+
+        DaggerHomePageComponent.builder()
     }
 
     /**
