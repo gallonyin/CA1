@@ -54,7 +54,8 @@ public class MainActivity extends BaseActivity implements
         HomePageFragment homePageFragment = new HomePageFragment();
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), homePageFragment, R.id.fragment_container);
 
-        DaggerHomePageComponent.builder()
+
+
     }
 
     /**

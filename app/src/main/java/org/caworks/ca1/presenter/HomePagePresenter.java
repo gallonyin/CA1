@@ -23,6 +23,7 @@ public class HomePagePresenter implements HomePageContract.Presenter {
     @Inject
     WeatherDao weatherDao;
 
+    @Inject
     public HomePagePresenter(Context context, HomePageContract.View weatherView) {
 
         this.context = context;
