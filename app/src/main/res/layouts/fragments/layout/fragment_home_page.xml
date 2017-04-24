@@ -136,9 +136,9 @@
                     android:layout_marginTop="16dp"
                     indicatorView:indicatorValue="0"
                     indicatorView:intervalSize="0dp"
-                    indicatorView:marker="@drawable/ic_vector_indicator_down"
                     indicatorView:textSize="8sp" />
 
+                    <!--indicatorView:marker="@drawable/ic_vector_indicator_down"-->
                 <TextView
                     android:id="@+id/tv_advice"
                     android:layout_width="wrap_content"

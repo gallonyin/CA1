@@ -175,7 +175,7 @@ public class IndicatorView extends LinearLayout {
         textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
         textView.setSingleLine();
         textView.setGravity(Gravity.CENTER);
-        textView.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f));
+        textView.setLayoutParams(new LayoutParams(0, LayoutParams.WRAP_CONTENT, 1.0f));
         this.addView(textView);
     }
 
